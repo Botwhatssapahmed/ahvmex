@@ -7,14 +7,25 @@ app = FastAPI()
 async def home():
     return """
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <body class="bg-gray-950 text-white flex justify-center items-center h-screen font-sans" dir="rtl">
-        
-        <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-2xl border border-gray-700 overflow-hidden relative">
+    <body class="bg-black text-white font-sans p-6" dir="rtl">
+        <div class="max-w-xl mx-auto bg-gray-900 border border-blue-500 rounded-3xl p-8 shadow-2xl">
+            <h1 class="text-3xl font-bold text-center text-blue-500 mb-6">Ahvmex Agency 🚀</h1>
+            <p class="text-center text-gray-400 mb-8">للحصول على نسختك المجانية، املأ طلبك أدناه وسنتواصل معك فوراً للتنفيذ.</p>
             
-            <div class="bg-blue-600 p-5 text-center shadow-md">
-                <h2 class="text-2xl font-bold text-white">Ahvmex Bot 🤖</h2>
-                <p class="text-sm text-blue-200 mt-1">متصل الآن - لإنشاء نسختك المجانية</p>
+            <div class="space-y-4">
+                <input id="type" placeholder="نوع موقعك (مثال: متجر، شركة)" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700">
+                <textarea id="desc" placeholder="اشرح لنا مواصفات موقعك..." class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 h-32"></textarea>
+                <button onclick="send()" class="w-full bg-blue-600 hover:bg-blue-500 p-4 rounded-xl font-bold transition">إرسال الطلب (مجاناً)</button>
             </div>
-            
-            <div id="chatbox" class="h-96 overflow-y-auto p-5 space-y-4 bg-gray-800">
-                <div class="bg-gray-700 p-4 rounded
+        </div>
+
+        <script>
+            function send() {
+                const t = document.getElementById('type').value;
+                const d = document.getElementById('desc').value;
+                const msg = `أهلاً Ahvmex، أريد موقعاً من نوع: ${t}. المواصفات: ${d}. هل يمكننا البدء؟`;
+                window.open(`https://wa.me/212600000000?text=${encodeURIComponent(msg)}`, '_blank');
+            }
+        </script>
+    </body>
+    """
